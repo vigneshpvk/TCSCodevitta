@@ -1,0 +1,71 @@
+import java.util.*;
+public class pairs {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		ArrayList<Integer> input=new ArrayList<Integer>();
+		ArrayList<String> arr=new ArrayList<String>();
+		for(int j=0;j<n;j++)
+		{
+			int num=sc.nextInt();
+			for(int i=0;num>0;i++)
+			{
+				int rem=num%10;
+				input.add(rem);
+				num=num/10;
+			}
+			int largest=Collections.max(input)*11;
+			int smallest=Collections.min(input)*7;
+			input.clear();
+			int res=largest+smallest;
+			String str1=""+res;
+			int len=str1.length();
+			if(len>2)
+			{
+				String result=""+(str1.charAt(len-1))+(str1.charAt(len-2));
+				StringBuilder strbuild=new StringBuilder(result);
+				strbuild.reverse();
+				arr.add(strbuild.toString());
+			}
+			else
+			{
+				arr.add(str1);
+			}		
+		}
+		//System.out.println(arr);
+		int sum=0;
+		
+		for(int i=0;i<n-2;i++)
+		{
+			String str3=arr.get(i);
+			if(str3!="a")
+			{
+				int count=0;
+			String str4=""+str3.charAt(0);
+			for(int j=i+2;j<n;j=j+2)
+			{
+				if(count<=2)
+				{
+				String str5=arr.get(j);
+				String str6=""+str5.charAt(0);
+				if(str4.equals(str6))
+				{
+					//System.out.println("character at zero -->"+str4 +","+str6);
+					count++;
+					arr.set(j, "a");
+				
+				}
+				}
+			}
+			sum=sum+count;
+			}
+			//System.out.println("loop -->"+i);
+		}
+		System.out.println(sum);
+		//System.out.println(arr);
+		
+	}
+
+}
