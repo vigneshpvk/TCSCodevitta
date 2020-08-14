@@ -1,0 +1,68 @@
+package jumblenum;
+import java.util.*;
+public class jumble {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+        ArrayList<Integer> arr=new ArrayList<Integer>();
+        String low1=sc.next();
+        String upr1=sc.next();
+        String str=sc.next();
+        int ind=0,low=0,upr=0;
+        int fin=0;
+        try
+        {
+        	low=Integer.parseInt(low1);
+        	upr=Integer.parseInt(upr1);
+        	ind=Integer.parseInt(str);
+        }
+        catch(NumberFormatException e)
+        {
+        	fin=1;
+        }
+        if(fin==1)
+        {
+        	System.out.println("Invalid Input");
+        }
+        else
+        {
+        int h;
+        int flag=0,lowlim=0;
+        for(int i=1;i<1000000;i++)
+        {
+            h=i*((2*i)-1);
+            arr.add(h);
+        }
+        //System.out.println(arr);
+        for(int i=0;i<arr.size();i++)
+        {
+        	if(((arr.get(i))>=low) && (flag==0))
+        	{
+        		lowlim=i-1;
+        		flag=1;
+        	}
+        }
+        int resind=lowlim+ind;
+        
+        if(resind<arr.size())
+        {
+        	int res=arr.get(lowlim+ind);
+        	if(res<upr)
+        	{
+        		System.out.println(res);
+        	}
+        	else
+        	{
+        		System.out.println("No number is present at this index");
+        	}
+        }
+        else
+        {
+        	System.out.println("No number is present at this index");
+        }
+        }
+
+	}
+
+}
