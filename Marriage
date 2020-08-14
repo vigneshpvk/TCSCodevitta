@@ -1,0 +1,71 @@
+package pyramid;
+import java.util.*;
+public class pyramid {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc=new Scanner(System.in);
+		int num=sc.nextInt();
+		ArrayList<Integer> inp=new ArrayList<Integer>();
+		for(int q=0;q<num;q++)
+		{
+			int z=sc.nextInt();
+			inp.add(z);
+		}
+		for(int f=0;f<num;f++)
+		{
+		int n=inp.get(f);
+		ArrayList<Integer> arr=new ArrayList<Integer>();
+		ArrayList<String> brr=new ArrayList<String>();
+		arr.add(6);
+		brr.add("00006");
+		brr.add("00028");
+		arr.add(28);
+		for(int i=0;i<1000;i++)
+		{
+			int r=((arr.get(i+1)*2)-(arr.get(i)))+16;
+			arr.add(r);
+			String temp=""+r;
+			if((temp.length())==1)
+			{
+				brr.add("0000"+r);
+			}
+			else if((temp.length())==2)
+			{
+				brr.add("000"+r);
+			}
+			else if((temp.length())==3)
+			{
+				brr.add("00"+r);
+			}
+			else if((temp.length())==4)
+			{
+				brr.add("0"+r);
+			}
+			else if((temp.length())==5)
+			{
+				brr.add(""+r);
+			}
+			
+		}
+		int p=0;
+		for(int i=1;i<=n;i++)
+		{
+			int ls=n-i;
+			for(int j=0;j<ls*3;j++)
+			{
+				System.out.print(" ");
+			}
+			for(int k=0;k<i-1;k++)
+			{
+				System.out.print(brr.get(p)+" ");
+				p++;
+			}
+			System.out.println(brr.get(p));
+			p++;
+		}
+		}
+	}
+
+}
