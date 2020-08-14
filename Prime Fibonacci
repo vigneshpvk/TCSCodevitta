@@ -1,0 +1,87 @@
+import java.util.*;
+import java.math.*; 
+public class prime {
+
+	static boolean isprime(int n)
+	{
+		int flag=0;
+		for(int i=2;i<(n/2)+1;i++)
+		{
+			if((n%i)==0)
+			{
+				flag=1;
+				break;
+			}
+		}
+		if(flag==0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	static void isfibonacci(int min,int max,int num)
+	{
+		long a=min,b=max;
+		long c=0;
+		for(int i=3;i<=num;i++)
+		{
+			c=a+b;
+			a=b;
+			b=c;
+			
+			//System.out.println(" "+c);
+		}
+
+		System.out.println("Result is -->"+c);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		int n1=sc.nextInt();
+		int n2=sc.nextInt();
+		ArrayList<Integer> first_array=new ArrayList<Integer>();
+		for(int i=n1;i<=n2;i++)
+		{
+			if(isprime(i))
+			{
+				first_array.add(i);
+			}
+		}
+		System.out.println("Prime Array is -->"+first_array);
+		ArrayList<Integer> sec_arr=new ArrayList<Integer>();
+		for(int i=0;i<first_array.size();i++)
+		{
+			for(int j=0;j<first_array.size();j++)
+			{
+				if(i!=j)
+				{
+					String str1=""+first_array.get(i)+first_array.get(j);
+					int combine_number=Integer.parseInt(str1);
+					sec_arr.add(combine_number);
+				}
+			}
+		}
+		System.out.println("Combined Array is --> "+sec_arr);
+		TreeSet<Integer> thr_arr=new TreeSet<Integer>();
+		for(int i=0;i<(sec_arr.size());i++)
+		{
+			if(isprime(sec_arr.get(i)))
+			{
+				thr_arr.add(sec_arr.get(i));
+			}
+		}
+		System.out.println("Third Sorted Array -->"+thr_arr);
+		int count=thr_arr.size();
+		int min=Collections.min(thr_arr);
+		int max=Collections.max(thr_arr);
+		System.out.println("Count of Prime Numbers -->"+count);
+		System.out.println("Minimum Prime Number is -->"+min);
+		System.out.println("Maximum Prime Number is  -->"+max);
+		isfibonacci(min,max,count);
+		
+	}
+}
