@@ -1,0 +1,30 @@
+package monkeys;
+import java.util.*;
+public class monkeys {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] arr={3,6,5,4,1,2};
+		int[] brr= {1,2,3,4,5,6};
+		int[] crr=new int[brr.length];
+		System.arraycopy(brr, 0, crr, 0, brr.length);
+		int[] drr=new int[brr.length];
+		System.arraycopy(brr, 0, drr, 0, brr.length);
+		Arrays.sort(brr);
+		int count=0;
+		while(count<1000)
+		{
+			count++;
+			for(int i=0;i<arr.length;i++)
+			{
+				crr[(arr[i])-1]=drr[i];
+			}
+			System.arraycopy(crr, 0, drr, 0, crr.length);
+			if(Arrays.equals(crr,brr))
+			{
+				break;
+			}
+		}
+		System.out.println(count);
+	}
+}
