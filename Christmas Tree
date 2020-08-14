@@ -1,0 +1,76 @@
+import java.util.*;
+public class christmas {
+	static void print(int n,int s,int e)
+	{
+		if(n<=1)
+		{
+			System.out.println("You cannot generate christmas tree");
+		}
+		else if(n>20)
+		{
+			System.out.println("Tree is no more");
+		}
+		else
+		{
+		int p=-1+s;
+		int max=n+1;
+	
+		for(int j=1;j<=(max-e);j++)
+		{
+			
+			for(int k=0;k<max-j;k++)
+			{
+				System.out.print(" ");
+				
+			}
+			p=p+2;
+			for(int a=0;a<p;a++)
+			{
+				System.out.print("*");
+			}
+			System.out.println("");
+		
+		}
+		
+	}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		int num=sc.nextInt();
+		ArrayList<Integer> arr=new ArrayList<Integer>();
+		for(int i=0;i<num;i++)
+		{
+			int inp=sc.nextInt();
+			arr.add(inp);
+		}
+		for(int r=0;r<num;r++)
+		{
+			int g=arr.get(r);
+			print(g,0,0);
+			if(g<=20)
+			{
+				for(int t=1;t<g;t++)
+				{
+					print(g,2,t);
+				}
+				if(g>1)
+				{
+
+					for(int y=0;y<=g;y++)
+					{
+						System.out.print(" ");
+					}
+					System.out.print("*");
+					System.out.println("");
+					for(int y=0;y<=g;y++)
+					{
+						System.out.print(" ");
+					}
+					System.out.print("*");
+					System.out.println("");
+				}
+			}
+		}
+	}
+}
